@@ -1,0 +1,42 @@
+.site-header {
+    min-height: 100px;
+    border-bottom: 1px solid #edeff1;
+    background: #ffffff;
+}
+
+.site-header a {
+    color: #4d86b5;
+    text-decoration: none;
+}
+
+.block-header-170 {
+    width: 14.666666%;
+    min-height: 100px;
+    float: left;
+    margin: 0 1.25%;
+}
+.block-header-1030 {
+    width: 80.333333%;
+    min-height: 100px;
+    float: left;
+    margin: 0 1.25%;
+}
+
+.main-logo {
+    display: block;
+    margin-top: 13%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.main-logo::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.hello {
+    margin-top: 28px;
+    text-align: center;
+}
+

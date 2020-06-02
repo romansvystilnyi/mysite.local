@@ -1,0 +1,35 @@
+.site-footer {
+    border-top: 1px solid #edeff1;
+    background: #ececec;
+    padding: 40px 0 40px 0;
+    font-size: 14px;
+    color: #44525e;
+}
+
+.block-footer-370 {
+    width: 30.83333%;
+    min-height: 100px;
+    float: left;
+    margin: 0 1.25%;
+}
+
+.block-footer-770 {
+    width: 64.166666%;
+    min-height: 100px;
+    float: left;
+    margin: 0 1.25%;
+}
+
+.footer-logo {
+    display: block;
+}
+
+.copyright {
+    margin-top: 20px;
+}
+
+.text-footer {
+    font-size: 34px;
+    text-align: center;
+    margin-top: 4%;
+}
