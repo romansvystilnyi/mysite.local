@@ -5,10 +5,12 @@
 ul.main-menu {
     position: relative;
     float: left;
+    margin: 0;
 }
 
 ul.main-menu > li {
     float: left;
+    padding: 12px 36px 12px 37px;
 }
 
 ul.main-menu li a {
@@ -19,6 +21,7 @@ ul.main-menu li a {
     text-decoration: none;
 }
 
-ul.main-menu li a:hover {
-    color: red;
+ul.main-menu li:hover {
+    border-color: #00b6f6;
+    background: #00b6f6;
 }
