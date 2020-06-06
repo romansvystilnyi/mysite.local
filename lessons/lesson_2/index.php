@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
-    <title>Урок 1</title>
+    <title>Урок 2</title>
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/style_header.css">
     <link rel="stylesheet" href="../../css/style_nav.css">
@@ -48,10 +48,10 @@
 
     <div class="site-main-wrap row">
         <main class="main-content container">
-            <h1>Таблица умножения</h1>
+            <h1>Таблица умножения(разукрашенная)</h1>
             <!-- Таблица -->
                 <?php
-                    drawTable();
+                decorateTable();
                 ?>
             <!-- Таблица -->
 

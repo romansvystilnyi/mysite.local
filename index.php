@@ -34,7 +34,7 @@
                     <a href="http://mysite.local/lessons/lesson_1">Урок 1</a>
                 </li>
                 <li class="menu-item">
-                    <a href="http://mysite.local/" onclick="return false;">Урок 2</a>
+                    <a href="http://mysite.local/lessons/lesson_2">Урок 2</a>
                 </li>
             </ul>
         </menu>
