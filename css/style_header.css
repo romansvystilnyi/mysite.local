@@ -15,6 +15,7 @@
     float: left;
     margin: 0 1.25%;
 }
+
 .block-header-1030 {
     width: 80.333333%;
     min-height: 100px;
@@ -29,7 +30,7 @@
     margin-right: auto;
 }
 
-.main-logo::after{
+.main-logo::after {
     content: "";
     display: block;
     clear: both;
