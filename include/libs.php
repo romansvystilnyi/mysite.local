@@ -274,7 +274,8 @@ function decorateTable($cols = 10, $rows = 2)
                 $resl2 = $tr * $td;
                 $snum = str_split($resl2);
                 $snum1 = array_shift($snum);
-                $snum2 = array_pop($snum);
+                $snum2 = array_shift($snum);
+                $snum3 = array_pop($snum);
                 unset($snum);
                 switch ($snum1) {
                     case 0:
@@ -311,6 +312,7 @@ function decorateTable($cols = 10, $rows = 2)
                 switch ($snum2) {
                     case 0:
                         $snum2 = "<span class='cyan-0'>" . $snum2 . "</span>";
+                        $snum3 = "<span class='cyan-0'>" . $snum3 . "</span>";
                         break;
                     case 1:
                         $snum2 = "<span class='red-1'>" . $snum2 . "</span>";
@@ -340,7 +342,7 @@ function decorateTable($cols = 10, $rows = 2)
                         $snum2 = "<span class='blueviolet-9'>" . $snum2 . "</span>";
                         break;
                 }
-                $resl2 = $snum1 . $snum2;
+                $resl2 = $snum1 . $snum2 . $snum3;
                 echo $num . " x " . $num2 . " = " . $resl2 . "<br>";
             }
             echo "</td>\n";

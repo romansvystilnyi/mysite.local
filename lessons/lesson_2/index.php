@@ -37,6 +37,9 @@
                 <li class="menu-item">
                     <a href="http://mysite.local/lessons/lesson_2">Урок 2</a>
                 </li>
+                <li class="menu-item">
+                    <a href="http://mysite.local/lessons/lesson_3">Урок 3</a>
+                </li>
             </ul>
         </menu>
         <!-- Меню -->
