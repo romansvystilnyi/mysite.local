@@ -9,6 +9,18 @@
     border: 1px solid #edeff1;
 }
 
+
+ul.list-of-post li{
+    list-style: disc;
+}
+ul.list-of-post li a {
+    padding: 12px 36px 12px 2px;
+    color: #44525e;
+    font-size: 17px;
+    line-height: 1.5;
+    text-decoration: none;
+}
+
 .red-1 {
     color: red;
 }

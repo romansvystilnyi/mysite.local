@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
-    <title>Урок 2</title>
+    <title>List of posts</title>
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/style_header.css">
     <link rel="stylesheet" href="../../css/style_nav.css">
@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="../../css/style_footer.css">
 </head>
 <body>
-
 <header class="site-header">
     <!-- Верхняя часть страницы -->
     <div class="container">
@@ -63,19 +62,23 @@
     <!-- Меню -->
 </div>
 
-<?php
-require_once "../../include/libs.php";
-?>
-
 <div class="site-main-wrap row">
     <main class="main-content container">
         <div class="row">
-            <h1>Таблица умножения(разукрашенная)</h1>
-            <!-- Таблица -->
-            <?php
-            decorateTable();
-            ?>
-            <!-- Таблица -->
+            <ul class="list-of-post">
+                <li>
+                    <a href="#">Пост 1</a>
+                </li>
+                <li>
+                    <a href="#">Пост 2</a>
+                </li>
+                <li>
+                    <a href="#">Пост 3</a>
+                </li>
+                <li>
+                    <a href="#">Пост 4</a>
+                </li>
+            </ul>
         </div>
     </main>
 </div>
@@ -98,3 +101,4 @@ require_once "../../include/libs.php";
 
 </body>
 </html>
+

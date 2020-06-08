@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
-    <title>Урок 2</title>
+    <title>Login</title>
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/style_header.css">
     <link rel="stylesheet" href="../../css/style_nav.css">
@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="../../css/style_footer.css">
 </head>
 <body>
-
 <header class="site-header">
     <!-- Верхняя часть страницы -->
     <div class="container">
@@ -63,19 +62,24 @@
     <!-- Меню -->
 </div>
 
-<?php
-require_once "../../include/libs.php";
-?>
-
 <div class="site-main-wrap row">
     <main class="main-content container">
         <div class="row">
-            <h1>Таблица умножения(разукрашенная)</h1>
-            <!-- Таблица -->
-            <?php
-            decorateTable();
-            ?>
-            <!-- Таблица -->
+            <form>
+                <div class="row">
+                    <div>
+                        <input placeholder="Адрес электронной почты" name="email" id="login-email" type="text">
+                        <label for="login-email" class="active">Адрес электронной почты</label>
+                    </div>
+                    <div>
+                        <input placeholder="Пароль" name="pass" id="login-pass" type="password">
+                        <label for="login-pass" class="">Пароль</label>
+                    </div>
+                    <div>
+                        <button id="login-submit">Логин</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </main>
 </div>

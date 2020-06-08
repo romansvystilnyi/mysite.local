@@ -14,13 +14,28 @@
 <header class="site-header">
     <!-- Верхняя часть страницы -->
     <div class="container">
-        <div class="block-header-170">
-            <a href="http://mysite.local/">
-                <img src="../../images/main_logo.png" alt="logo" class="main-logo">
-            </a>
-        </div>
-        <div class="block-header-1030">
-            <h1 class="hello">My site</h1>
+        <div class="row">
+            <div class="block-header-170">
+                <a href="http://mysite.local/">
+                    <img src="../../images/main_logo.png" alt="logo" class="main-logo">
+                </a>
+            </div>
+            <div class="block-header-1030">
+                <h1 class="hello">My site</h1>
+            </div>
+            <div class="block-header-170">
+                <ul>
+                    <li>
+                        <button><a href="http://mysite.local/pages/registration">Регистрация</a></button>
+                    </li>
+                    <li>
+                        <button><a href="http://mysite.local/pages/login">Логин</a></button>
+                    </li>
+                    <li>
+                        <button><a href="http://mysite.local/pages/profile">Профиль</a></button>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
     <!-- Верхняя часть страницы -->
@@ -28,7 +43,7 @@
 
 <div class="menu-wrap row">
     <!-- Меню -->
-    <menu class="menu container">
+    <nav class="menu container">
         <ul class="main-menu">
             <li class="menu-item">
                 <a href="http://mysite.local/lessons/lesson_1">Урок 1</a>
@@ -39,25 +54,30 @@
             <li class="menu-item">
                 <a href="http://mysite.local/lessons/lesson_3">Урок 3</a>
             </li>
+            <li class="menu-item">
+                <a href="http://mysite.local/pages/list_of_posts">Список постов</a>
+            </li>
         </ul>
-    </menu>
+    </nav>
     <!-- Меню -->
 </div>
 
 <div class="site-main-wrap row">
     <main class="main-content container">
-        <p>
-            <b>
-                <?php
-                require_once "../../include/string_rev.php";
-                echo string_rev($_POST['etext']);
-                ?>
-            </b>
-        </p>
-        <br>
-        <a href="http://mysite.local/lessons/lesson_3">
-            <button>Назад</button>
-        </a>
+        <div class="row">
+            <p>
+                <b>
+                    <?php
+                    require_once "../../include/string_rev.php";
+                    echo string_rev($_POST['etext']);
+                    ?>
+                </b>
+            </p>
+            <br>
+            <a href="http://mysite.local/lessons/lesson_3">
+                <button>Назад</button>
+            </a>
+        </div>
     </main>
 </div>
 

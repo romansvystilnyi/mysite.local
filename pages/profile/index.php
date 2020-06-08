@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
-    <title>Урок 2</title>
+    <title>Profile</title>
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/style_header.css">
     <link rel="stylesheet" href="../../css/style_nav.css">
@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="../../css/style_footer.css">
 </head>
 <body>
-
 <header class="site-header">
     <!-- Верхняя часть страницы -->
     <div class="container">
@@ -63,19 +62,44 @@
     <!-- Меню -->
 </div>
 
-<?php
-require_once "../../include/libs.php";
-?>
-
 <div class="site-main-wrap row">
     <main class="main-content container">
         <div class="row">
-            <h1>Таблица умножения(разукрашенная)</h1>
-            <!-- Таблица -->
-            <?php
-            decorateTable();
-            ?>
-            <!-- Таблица -->
+            <h1>Профиль</h1>
+            <form>
+                <div class="row">
+                    <div class="input-field">
+                        <input id="signup-name" type="text">
+                        <label class="active" for="signup-name">Имя</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="signup-pass" type="text">
+                        <label class="active" for="signup-pass">Пароль</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="signup-birthday" type="text">
+                        <label class="active" for="signup-birthday">День рождения</label>
+                    </div>
+                    <div>
+                        <p>
+                            <label>
+                                <input name="group1" type="radio" checked/>
+                                <span>Мужчина</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input name="group1" type="radio"/>
+                                <span>Женщина</span>
+                            </label>
+                        </p>
+                        <p>
+                    </div>
+                    <div>
+                        <button type="submit" id="signup-submit">Обновить</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </main>
 </div>
