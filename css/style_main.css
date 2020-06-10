@@ -10,9 +10,10 @@
 }
 
 
-ul.list-of-post li{
+ul.list-of-post li {
     list-style: disc;
 }
+
 ul.list-of-post li a {
     padding: 12px 36px 12px 2px;
     color: #44525e;
