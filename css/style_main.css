@@ -22,6 +22,12 @@ ul.list-of-post li a {
     text-decoration: none;
 }
 
+#posts article h2 a {
+    padding: 12px 36px 12px 2px;
+    color: #44525e;
+    text-decoration: none;
+}
+
 .red-1 {
     color: red;
 }
