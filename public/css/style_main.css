@@ -9,6 +9,10 @@
     border: 1px solid #edeff1;
 }
 
+.p-font-size-11 {
+    font-size: 11px;
+    color: gray;
+}
 
 ul.list-of-post li {
     list-style: disc;

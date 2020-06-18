@@ -4,6 +4,9 @@
 namespace app\controllers;
 
 
+use app\models\Posts;
+
+
 class PostsController extends AppController
 {
 
@@ -11,6 +14,9 @@ class PostsController extends AppController
     {
         $this->layout = 'main';
         $this->view = 'index';
+        $model = new Posts;
+        $posts = $model->findAll();
+        $this->set(compact('posts'));
     }
 
     public function testAction()
