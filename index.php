@@ -1,28 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
-    <title>mysite.local</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/style_header.css">
-    <link rel="stylesheet" href="css/style_nav.css">
-    <link rel="stylesheet" href="css/style_main.css">
-    <link rel="stylesheet" href="css/style_footer.css">
-</head>
-<body>
-
 <?php
-require_once "include/header.php";
-require_once "include/navigation.php";
-?>
 
-<?php
-require_once 'include/layout.php';
-?>
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
-<?php
-require_once "include/footer.php";
-?>
-</body>
-</html>
+
+use vendor\core\Router;
+
+
+$query = rtrim($_SERVER['QUERY_STRING'], '/');
+
+define('WWW', __DIR__ . '/public');
+define('CORE', __DIR__ . '/vendor/core');
+define('ROOT', __DIR__);
+define('APP', __DIR__ . '/app');
+define('LAYOUT', 'default');
+
+require 'vendor/libs/functions.php';
+
+spl_autoload_register(function ($class) {
+    $file = ROOT . '/' . str_replace('\\', '/', $class . '.php');
+    if (is_file($file)) {
+        require_once $file;
+    }
+});
+
+Router::add('^page/(?P<action>[a-z-]+)/(?P<alias>[a-z-]+)$', ['controller' => 'Page']);
+Router::add('^page/(?P<alias>[a-z-]+)$', ['controller' => 'Page', 'action' => 'view']);
+
+//defaults routs
+Router::add('^$', ['controller' => 'Main', 'action' => 'index']);
+Router::add('^(?P<controller>[a-z-]+)/?(?P<action>[a-z-]+)?$');
+
+Router::dispatch($query);
