@@ -14,8 +14,8 @@
 <h1>Hello, world!</h1>
 
 <?= $content; ?>
-<?= debug(\vendor\core\Db::$countSql) ?>
-<?= debug(\vendor\core\Db::$queries) ?>
+<? //= debug(\vendor\core\Db::$countSql) ?>
+<? //= debug(\vendor\core\Db::$queries) ?>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

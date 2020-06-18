@@ -15,7 +15,7 @@ class PostsController extends AppController
         $this->layout = 'main';
         $this->view = 'index';
         $model = new Posts;
-        $posts = $model->findAll();
+        $posts = \R::findAll('posts');
         $this->set(compact('posts'));
     }
 

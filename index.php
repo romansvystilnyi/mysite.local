@@ -12,6 +12,7 @@ $query = rtrim($_SERVER['QUERY_STRING'], '/');
 define('WWW', __DIR__ . '/public');
 define('CORE', __DIR__ . '/vendor/core');
 define('ROOT', __DIR__);
+define('LIBS', __DIR__ . '/vendor/libs');
 define('APP', __DIR__ . '/app');
 define('LAYOUT', 'default');
 
