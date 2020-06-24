@@ -14,6 +14,12 @@
             <li class="menu-item">
                 <a href="http://mysite.local/posts">Список постов</a>
             </li>
+            <?php if (!empty($_SESSION)): ?>
+                <li>
+                    <a href="http://mysite.local/user/profile">Профиль</a>
+                </li>
+            <?php endif; ?>
+
         </ul>
     </nav>
     <!-- Меню -->

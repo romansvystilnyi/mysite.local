@@ -13,14 +13,18 @@
             <div class="block-header-170">
                 <ul>
                     <li>
-                        <button><a href="http://mysite.local/account/registration">Регистрация</a></button>
+                        <button><a href="http://mysite.local/user/singup">Sing Up</a></button>
                     </li>
-                    <li>
-                        <button><a href="http://mysite.local/account/login">Логин</a></button>
-                    </li>
-                    <li>
-                        <button><a href="http://mysite.local/account/profile">Профиль</a></button>
-                    </li>
+                    <?php if (empty($_SESSION)): ?>
+                        <li>
+                            <button><a href="http://mysite.local/user/login">Login</a></button>
+                        </li>
+                    <?php endif; ?>
+                    <?php if (isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>
+                        <li>
+                            <button><a href="http://mysite.local/user/logout"><?= $meta['login'] ?> | Logout</a></button>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>

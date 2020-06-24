@@ -16,7 +16,9 @@ class PostsController extends AppController
         $this->view = 'index';
         $model = new Posts;
         $posts = \R::findAll('posts');
-        $this->set(compact('posts'));
+        $this->setMeta('Posts');
+        $meta = $this->meta;
+        $this->set(compact('posts', 'meta'));
     }
 
     public function testAction()

@@ -16,8 +16,10 @@ class MainController extends AppController
         $this->view = 'hello';
         $model = new Main;
         $posts = \R::findAll('posts');
-        $title = 'Page title';
-        $this->set(compact('title', 'posts'));
+
+        $this->setMeta('mysite.local');
+        $meta = $this->meta;
+        $this->set(compact('title', 'posts', 'meta'));
     }
 
 }
