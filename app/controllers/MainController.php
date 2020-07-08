@@ -5,6 +5,7 @@ namespace app\controllers;
 
 
 use app\models\Main;
+use ml\core\App;
 
 
 class MainController extends AppController
@@ -14,8 +15,6 @@ class MainController extends AppController
     {
         $this->layout = 'main';
         $this->view = 'hello';
-        $model = new Main;
-        $posts = \R::findAll('posts');
 
         $this->setMeta('mysite.local');
         $meta = $this->meta;

@@ -8,7 +8,7 @@
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+            <input required type="password" name="password" class="form-control" id="password" placeholder="Password">
         </div>
         <div class="form-group">
             <label for="name">Имя</label>
@@ -20,4 +20,13 @@
         </div>
         <button type="submit" class="btn">Обновить</button>
     </form>
+    <form method="post" action="/user/upload" enctype="multipart/form-data">
+        <br/>
+        <div class="form-group">
+            <input type="file" name="img_upload">
+        </div>
+        <input type="submit" name="upload" value="Загрузить">
+    </form>
+    <img src="data:image/jpeg;base64, <? $show_img ?>" alt="avatar">
+
 </div>

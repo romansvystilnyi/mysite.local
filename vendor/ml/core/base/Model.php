@@ -12,13 +12,13 @@ use R;
 abstract class Model
 {
     /**
-     * свойстово подключение
+     * connectivity
      * @var
      */
     protected $pdo;
 
     /**
-     * имя таблици с которой работает Модель
+     * the name of the table the Model is working with
      * @var
      */
     protected $table;
@@ -27,7 +27,7 @@ abstract class Model
     public $attribute = [];
 
     /**
-     * записует ошибки валидации
+     * records validation errors
      * @var array
      */
     public $errors = [];
@@ -35,7 +35,7 @@ abstract class Model
     public $rules = [];
 
     /**
-     * заполняет свойство PDO
+     * populates the PDO property
      * Model constructor.
      */
     public function __construct()
@@ -74,14 +74,15 @@ abstract class Model
         return \R::store($tbl);
     }
 
-//    public function update($table, $id)
-//    {
-//        $tbl = R::load($table, $id);
-//        foreach ($this->attribute as $name => $value) {
-//            $tbl->$name = $value;
-//        }
-//        return \R::store($tbl);
-//    }
+    public function update($table, $id)
+    {
+        $tbl = R::load($table, $id);
+        foreach ($this->attribute as $name => $value) {
+            $tbl->$name = $value;
+            echo $tbl;
+        }
+        return \R::store($tbl);
+    }
 
     public function getErrors()
     {
@@ -96,7 +97,7 @@ abstract class Model
     }
 
     /**
-     * обертка над методом execute() класса Db
+     * a wrapper over the execute() method of the Db class
      */
     public function query($sql)
     {
@@ -104,7 +105,7 @@ abstract class Model
     }
 
     /**
-     * Возвращает все данные из таблицы с которой работает Модель
+     * Returns all data from the table with which the model works
      */
     public function findAll()
     {
@@ -113,7 +114,7 @@ abstract class Model
     }
 
     /**
-     * Возвращает данные по id из таблицы с которой работает Модель
+     * Returns data by id from the table with which the model works
      * @param $id
      * @param string $field
      * @return array|bool

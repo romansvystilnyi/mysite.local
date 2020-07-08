@@ -8,19 +8,19 @@ class View
 {
 
     /**
-     * текущий маршрут и параметры (controller, action, params)
+     * current route and parameters (controller, action, params)
      * @var array
      */
     public $route = [];
 
     /**
-     * текущий вид
+     * current view
      * @var string
      */
     public $view;
 
     /**
-     * текущий шаблон
+     * current template
      * @var string
      */
     public $layout;

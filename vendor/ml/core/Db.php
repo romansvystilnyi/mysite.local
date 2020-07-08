@@ -7,7 +7,7 @@ namespace ml\core;
 class Db
 {
     /**
-     * свойстово подключение
+     * connectivity
      * @var \PDO
      */
     protected $pdo;
@@ -15,35 +15,27 @@ class Db
     protected static $instance;
 
     /**
-     * количество выполненых Sql запросов
+     * the number of executed Sql queries
      * @var int
      */
     public static $countSql = 0;
 
     /**
-     * сохраняет все запросы Sql
+     * saves all Sql queries
      * @var array
      */
     public static $queries = [];
 
     protected function __construct()
     {
-        //$db = require ROOT . '/config/config_db.php';
-        require LIBS . '/rb.php';
         $db = require 'config/config_db.php';
         \R::setup($db['dsn'], $db['user'], $db['pass']);
         \R::freeze(true);
-//        R::fancyDebug(TRUE);
-//        $options = [
-//            \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
-//            \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
-//        ];
-//        $this->pdo = new \PDO($db['dsn'], $db['user'], $db['pass'], $options);
     }
 
     /**
      * singleton
-     * подключение к базе данных
+     * database connection
      */
     public static function getInstance()
     {

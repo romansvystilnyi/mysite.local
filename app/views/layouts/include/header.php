@@ -22,7 +22,8 @@
                     <?php endif; ?>
                     <?php if (isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>
                         <li>
-                            <button><a href="http://mysite.local/user/logout"><?= $meta['login'] ?> | Logout</a></button>
+                            <button><a href="http://mysite.local/user/logout"><?= $meta['login'] ?> | Logout</a>
+                            </button>
                         </li>
                     <?php endif; ?>
                 </ul>

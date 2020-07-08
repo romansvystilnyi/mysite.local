@@ -4,6 +4,9 @@
 namespace ml\core;
 
 
+use ml\core\Registry;
+
+
 class App
 {
     public static $app;
@@ -11,5 +14,6 @@ class App
     public function __construct()
     {
         session_start();
+        self::$app = Registry::instance();
     }
 }

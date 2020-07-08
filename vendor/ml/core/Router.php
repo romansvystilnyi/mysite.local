@@ -13,22 +13,22 @@ class Router
     }
 
     /**
-     * таблица маршрутов
+     * route table
      * @var array
      */
     protected static $routes = [];
 
     /**
-     * текущий маршрут
+     * current route
      * @var array
      */
     protected static $route = [];
 
     /**
-     * добавляет маршрут в таблицу маршрутов
+     * adds a route to the route table
      *
-     * @param string $regexp регулярное выражение маршрута
-     * @param array $route маршрут ([controller, action, params])
+     * @param string $regexp route regex
+     * @param array $route route ([controller, action, params])
      */
     public static function add($regexp, $route = [])
     {
@@ -36,7 +36,7 @@ class Router
     }
 
     /**
-     * возвращает таблицу маршрутов
+     * returns route table
      *
      * @return array
      */
@@ -46,7 +46,7 @@ class Router
     }
 
     /**
-     * возвращает текущий маршрутов (controller, action, [params])
+     * returns current routes (controller, action, [params])
      *
      * @return array
      */
@@ -56,8 +56,8 @@ class Router
     }
 
     /**
-     * ищет URL в таблице маршрутов
-     * @param string $url входящий URL
+     * looks for URLs in the route table
+     * @param string $url incoming URL
      * @return bool
      */
     public static function matchRoute($url)
@@ -81,8 +81,8 @@ class Router
     }
 
     /**
-     * перенаправляет URL по корректному маршруту
-     * @param string $url входящий URL
+     * redirects the URL to the correct route
+     * @param string $url incoming URL
      * @return void
      */
     public static function dispatch($url)
@@ -90,18 +90,22 @@ class Router
         $url = self::removeQueryString($url);
         if (self::matchRoute($url)) {
             $controller = 'app\controllers\\' . self::$route['controller'] . 'Controller';
-            if (class_exists($controller)) {
-                $controllerObject = new $controller(self::$route);
-                $action = self::lowerCamelCase(self::$route['action']) . 'Action';
-                if (method_exists($controllerObject, $action)) {
-                    $controllerObject->$action();
-                    $controllerObject->getView();
-                } else {
-                    echo "Метод  <b>$controller::$action</b> не найден ";
-                }
-            } else {
+            if (!class_exists($controller)) {
                 echo "Контроллер <b>$controller</b> не найден ";
+                http_response_code(404);
+                include 'public/404.html';
+                return;
             }
+            $controllerObject = new $controller(self::$route);
+            $action = self::lowerCamelCase(self::$route['action']) . 'Action';
+            if (!method_exists($controllerObject, $action)) {
+                echo "Метод  <b>$controller::$action</b> не найден ";
+                http_response_code(404);
+                include 'public/404.html';
+                return;
+            }
+            $controllerObject->$action();
+            $controllerObject->getView();
         } else {
             http_response_code(404);
             include 'public/404.html';
@@ -109,8 +113,8 @@ class Router
     }
 
     /**
-     * преобразует имена к виду camelCase
-     * @param string $name сьрока для преобразования
+     * converts names to camelCase
+     * @param string $name string to convert
      * @return string
      */
     protected static function upperCamelCase($name)
@@ -120,8 +124,8 @@ class Router
     }
 
     /**
-     * преобразует имена к виду camelCase
-     * @param string $name сьрока для преобразования
+     * converts names to camelCase
+     * @param string $name string to convert
      * @return string
      */
     protected static function lowerCamelCase($name)
@@ -130,8 +134,8 @@ class Router
     }
 
     /**
-     * возвращает строку без GET параметров
-     * @param string $url запрос URL
+     * returns a string without GET parameters
+     * @param string $url request URL
      * @return string
      */
     protected static function removeQueryString($url)

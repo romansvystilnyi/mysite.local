@@ -3,6 +3,7 @@
 
 namespace ml\core\base;
 
+
 /**
  * Class Controller
  * @package vendor\core\base
@@ -10,25 +11,25 @@ namespace ml\core\base;
 abstract class Controller
 {
     /**
-     * текущий маршрут и параметры (controller, action, params)
+     * current route and parameters (controller, action, params)
      * @var array
      */
     public $route = [];
 
     /**
-     * вид
+     * view
      * @var string
      */
     public $view;
 
     /**
-     * текущий шаблон
+     * current template
      * @var string
      */
     public $layout;
 
     /**
-     * пользовательськие данные
+     * user data
      * @var array
      */
     public $vars;

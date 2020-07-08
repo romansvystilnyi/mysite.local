@@ -11,7 +11,6 @@ class PageController extends AppController
     {
         debug($this->route);
         debug($_GET);
-//        echo $_GET['page'];
         echo 'Page::view';
     }
 

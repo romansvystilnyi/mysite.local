@@ -5,6 +5,7 @@ namespace app\controllers;
 
 
 use app\models\Posts;
+use ml\core\App;
 
 
 class PostsController extends AppController
@@ -14,8 +15,15 @@ class PostsController extends AppController
     {
         $this->layout = 'main';
         $this->view = 'index';
+
         $model = new Posts;
-        $posts = \R::findAll('posts');
+        $posts = App::$app->cache->get($model->table);
+        if (!$posts) {
+            $posts = \R::findAll($model->table);
+            App::$app->cache->set('post', $posts);
+        }
+        App::$app->cache->delete('post');
+
         $this->setMeta('Posts');
         $meta = $this->meta;
         $this->set(compact('posts', 'meta'));

@@ -6,6 +6,11 @@ namespace Composer\Autoload;
 
 class ComposerStaticInita41d922cbafd2096d9cb8c0f974d1aac
 {
+    public static $files = array(
+        'a74be81a625459b3ceac0c82ebabf7f1' => __DIR__ . '/../..' . '/config/config_db.php',
+        'be4e516a78c0b26907ac377ac9e5570a' => __DIR__ . '/..' . '/ml/libs/rb.php',
+    );
+
     public static $prefixLengthsPsr4 = array(
         'm' =>
             array(
@@ -36,11 +41,35 @@ class ComposerStaticInita41d922cbafd2096d9cb8c0f974d1aac
             ),
     );
 
+    public static $classMap = array(
+        'Valitron\\Validator' => __DIR__ . '/..' . '/vlucas/valitron/src/Valitron/Validator.php',
+        'app\\controllers\\AppController' => __DIR__ . '/../..' . '/app/controllers/AppController.php',
+        'app\\controllers\\LessonsController' => __DIR__ . '/../..' . '/app/controllers/LessonsController.php',
+        'app\\controllers\\MainController' => __DIR__ . '/../..' . '/app/controllers/MainController.php',
+        'app\\controllers\\PageController' => __DIR__ . '/../..' . '/app/controllers/PageController.php',
+        'app\\controllers\\PostsController' => __DIR__ . '/../..' . '/app/controllers/PostsController.php',
+        'app\\controllers\\UserController' => __DIR__ . '/../..' . '/app/controllers/UserController.php',
+        'app\\models\\Main' => __DIR__ . '/../..' . '/app/models/Main.php',
+        'app\\models\\Posts' => __DIR__ . '/../..' . '/app/models/Posts.php',
+        'app\\models\\User' => __DIR__ . '/../..' . '/app/models/User.php',
+        'ml\\core\\App' => __DIR__ . '/..' . '/ml/core/App.php',
+        'ml\\core\\Db' => __DIR__ . '/..' . '/ml/core/Db.php',
+        'ml\\core\\Registry' => __DIR__ . '/..' . '/ml/core/Registry.php',
+        'ml\\core\\Router' => __DIR__ . '/..' . '/ml/core/Router.php',
+        'ml\\core\\TSingletone' => __DIR__ . '/..' . '/ml/core/TSingletone.php',
+        'ml\\core\\base\\Controller' => __DIR__ . '/..' . '/ml/core/base/Controller.php',
+        'ml\\core\\base\\Model' => __DIR__ . '/..' . '/ml/core/base/Model.php',
+        'ml\\core\\base\\View' => __DIR__ . '/..' . '/ml/core/base/View.php',
+        'ml\\libs\\Cache' => __DIR__ . '/..' . '/ml/libs/Cache.php',
+        'ml\\libs\\Test' => __DIR__ . '/..' . '/ml/libs/Test.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInita41d922cbafd2096d9cb8c0f974d1aac::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInita41d922cbafd2096d9cb8c0f974d1aac::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInita41d922cbafd2096d9cb8c0f974d1aac::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -6,6 +6,10 @@
     "psr-4": {
       "ml\\": "vendor/ml",
       "app\\": "app"
-    }
+    },
+    "files": [
+      "config/config_db.php",
+      "vendor/ml/libs/rb.php"
+    ]
   }
 }
