@@ -15,15 +15,7 @@ class PostsController extends AppController
     {
         $this->layout = 'main';
         $this->view = 'index';
-
-        $model = new Posts;
-        $posts = App::$app->cache->get($model->table);
-        if (!$posts) {
-            $posts = \R::findAll($model->table);
-            App::$app->cache->set('post', $posts);
-        }
-        App::$app->cache->delete('post');
-
+        $posts = Posts::findAll('posts');
         $this->setMeta('Posts');
         $meta = $this->meta;
         $this->set(compact('posts', 'meta'));

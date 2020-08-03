@@ -23,10 +23,10 @@
     <form method="post" action="/user/upload" enctype="multipart/form-data">
         <br/>
         <div class="form-group">
-            <input type="file" name="img_upload">
+            <input type="file" name="file">
         </div>
-        <input type="submit" name="upload" value="Загрузить">
+        <button type="submit" name="submit">Загрузить</button>
     </form>
-    <img src="data:image/jpeg;base64, <? $show_img ?>" alt="avatar">
+    <img src="<?= $show_img ?>" alt="avatar">
 
 </div>

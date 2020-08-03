@@ -23,7 +23,9 @@ require __DIR__ . '/vendor/autoload.php';
 new \ml\core\App();
 
 Router::add('^page/(?P<action>[a-z-]+)/(?P<alias>[a-z-]+)$', ['controller' => 'Page']);
-Router::add('^page/(?P<alias>[a-z-]+)$', ['controller' => 'Page', 'action' => 'view']);
+Router::add('^page/(?P<alias>(\d+))$', ['controller' => 'Page', 'action' => 'view']);
+Router::add('^page/(?P<alias>(\d+))/edit$', ['controller' => 'Page', 'action' => 'edit']);
+Router::add('^page/(?P<alias>(\d+))/delete$', ['controller' => 'Page', 'action' => 'delete']);
 
 //defaults routs
 Router::add('^$', ['controller' => 'Main', 'action' => 'index']);

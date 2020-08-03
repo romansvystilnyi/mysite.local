@@ -19,8 +19,7 @@ class ComposerAutoloaderInita41d922cbafd2096d9cb8c0f974d1aac
             return self::$loader;
         }
 
-        spl_autoload_register(array('ComposerAutoloaderInita41d922cbafd2096d9cb8c0f974d1aac', 'loadClassLoader'), true,
-            true);
+        spl_autoload_register(array('ComposerAutoloaderInita41d922cbafd2096d9cb8c0f974d1aac', 'loadClassLoader'), true, true);
         self::$loader = $loader = new \Composer\Autoload\ClassLoader();
         spl_autoload_unregister(array('ComposerAutoloaderInita41d922cbafd2096d9cb8c0f974d1aac', 'loadClassLoader'));
 

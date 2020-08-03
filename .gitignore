@@ -1,3 +1,5 @@
 .idea/*
 
+/public/images/avatars/*
+
 *.class

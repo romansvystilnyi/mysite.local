@@ -26,11 +26,10 @@ class Db
      */
     public static $queries = [];
 
-    protected function __construct()
+    private function __construct()
     {
         $db = require 'config/config_db.php';
-        \R::setup($db['dsn'], $db['user'], $db['pass']);
-        \R::freeze(true);
+        $this->pdo = new \PDO($db['dsn'], $db['user'], $db['pass']);
     }
 
     /**
@@ -61,14 +60,14 @@ class Db
      * @param $sql
      * @return bool
      */
-    public function query($sql, $params = [])
+    public function query($sql, $params = [], $className = 'stdClass')
     {
         self::$countSql++;
         self::$queries[] = $sql;
         $stmt = $this->pdo->prepare($sql);
         $res = $stmt->execute($params);
         if ($res !== false) {
-            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+            return $stmt->fetchAll(\PDO::FETCH_CLASS, $className);
         }
         return [];
     }

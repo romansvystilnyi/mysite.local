@@ -20,21 +20,17 @@ class UserController extends AppController
         $this->set(compact('meta'));
 
         if (!empty($_POST)) {
-            $user = new User();
-            $data = $_POST;
-            $user->load($data);
-            if (!$user->validate($data) || !$user->checkUnique()) {
-                $user->getErrors();
-                $_SESSION['form_data'] = $data;
-                redirect();
+            try {
+                $user = User::signUp($_POST);
+            } catch (\Exception $e) {
+                $_SESSION['error'] = $e->getMessage();
+                return;
             }
-            $user->attribute['password'] = password_hash($user->attribute['password'], PASSWORD_DEFAULT);
-            if ($user->save('user')) {
+            if ($user instanceof User) {
                 $_SESSION['success'] = 'Вы успешно зарегистрированы.';
-            } else {
-                $_SESSION['error'] = 'Ошибка! Попробуйте позже.';
+                redirect('/');
+                return;
             }
-            redirect();
         }
     }
 
@@ -42,7 +38,7 @@ class UserController extends AppController
     {
         if (!empty($_POST)) {
             $user = new User();
-            if ($user->login()) {
+            if ($user->login($_POST)) {
                 $_SESSION['success'] = 'Вы успешно авторизованы.';
                 redirect('/user/profile');
             } else {
@@ -50,6 +46,7 @@ class UserController extends AppController
             }
             redirect();
         }
+
         $this->setMeta('Login');
         $meta = $this->meta;
         $this->set(compact('meta'));
@@ -70,53 +67,80 @@ class UserController extends AppController
         if (empty($_SESSION)) {
             redirect('/user/login');
         } else {
-            $model = new User();
+            $login = $_SESSION['user']['login'];
+            $email = $_SESSION['user']['email'];
+            $name = $_SESSION['user']['name'];
             $id = $_SESSION['user']['id'];
-            $user = \R::load('user', $id);
-            $login = $user->login;
-            $email = $user->email;
-            $name = $user->name;
 
-            $tbl = \R::load('images', 4);
-            $show_img = $tbl['img'];
+            $pathImage = 'public/images/avatars/'. $id;
+
+            if (file_exists($pathImage . '.png')) {
+                $show_img = 'http://mysite.local/public/images/avatars/' . $id . '.png';
+            } else {
+                $show_img = 'http://mysite.local/public/images/default.png';
+            }
 
         }
 
         if (!empty($_POST)) {
-            $user = new User();
-            $data = $_POST;
-            $user->load($data);
-
-            $user->attribute['password'] = password_hash($user->attribute['password'], PASSWORD_DEFAULT);
-            if ($user->update('user', $id)) {
-                $_SESSION['success'] = 'Обновлено!';
-            } else {
-                $_SESSION['error'] = 'Ошибка! Попробуйте позже.';
+            $user = User::findOneByColumn('user','id', $_SESSION['user']['id']);
+            try {
+                $user->updateData($_POST);
+            } catch (\Exception $e) {
+                $_SESSION['error'] = $e->getMessage();
+                return;
             }
-            redirect();
+            if ($user instanceof User) {
+                $_SESSION['success'] = 'Успешно обновлено.';
+                redirect();
+                return;
+            }
         }
-        $this->view = 'profile';
-        $this->setMeta('Profile', $name);
+
+        $this->setMeta('Profile');
         $meta = $this->meta;
         $this->set(compact('meta', 'login', 'email', 'name', 'show_img'));
     }
 
     public function uploadAction()
     {
-        if (isset($_POST['upload'])) {
-            if (!empty($_FILES['img_upload']['tmp_name'])) {
-                $model = new User();
-                $img = addslashes(file_get_contents($_FILES['img_upload']['tmp_name']));
-                $img = file_get_contents($img);
-                $img = base64_encode($img);
-                $tbl = \R::dispense('images');
-                $tbl->img = $img;
-                \R::store($tbl);
-                $_SESSION['success'] = 'Обновлено!';
+        if (isset($_POST['submit'])) {
+            $file = $_FILES['file'];
+
+            $fileName = $_FILES['file']['name'];
+            $fileTmpName = $_FILES['file']['tmp_name'];
+            $fileSize = $_FILES['file']['size'];
+            $fileError = $_FILES['file']['error'];
+            $fileType = $_FILES['file']['type'];
+
+            $fileExp = explode('.', $fileName);
+            $fileActualExt = strtolower(end($fileExp));
+
+            $allowed = array('png');
+
+            if (in_array($fileActualExt, $allowed)) {
+                if ($fileError === 0) {
+                    if ($fileSize < 10000) {
+                        $fileNameNew = $_SESSION['user']['id'] . "." . $fileActualExt;
+                        $fileDestination = 'public/images/avatars/' . $fileNameNew;
+                        move_uploaded_file($fileTmpName, $fileDestination);
+                        $_SESSION['success'] = 'Изображение успешно добавлено.';
+                        redirect('/user/profile');
+
+                    } else {
+                        $_SESSION['error'] = "Ваш файл слишком большой!(Не больше 10 Мб)";
+                        redirect('/user/profile');
+                    }
+                } else {
+                    $_SESSION['error'] = "При загрузке файла произошла ошибка!";
+                    redirect('/user/profile');
+                }
             } else {
-                $_SESSION['error'] = 'Ошибка! Попробуйте позже.';
+                $_SESSION['error'] = "Вы не можете загружать файлы этого типа! (тольно 'png')";
+                redirect('/user/profile');
             }
         }
-        redirect('/user/profile');
+
+        $this->set(compact('meta','show_img'));
     }
 }

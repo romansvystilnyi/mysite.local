@@ -8,8 +8,7 @@
       "app\\": "app"
     },
     "files": [
-      "config/config_db.php",
-      "vendor/ml/libs/rb.php"
+      "config/config_db.php"
     ]
   }
 }
